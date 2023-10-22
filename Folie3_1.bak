@@ -28,32 +28,3 @@
 (define (>= x y )
   (or (> x y ) (= x y)))
 #|es könnte auch sein (not (> x y))|#
-
-(define (f1 a b c)
- (and a b c))
-
-(define (f2 a b c)
- (and a (or b c)))
-
-(define (f3 a b c)
- (or a (not (and b c))))
-
-
-(define (gut-genug? schaetzwert x)
-(< (abs (- (quadrat schaetzwert) x)) 0.00001))
-
-(define (mittelwert x y)
-(/ (+ x y) 2))
-
-(define (verbessern schaetzwert x)
-(mittelwert schaetzwert (/ x schaetzwert)))
-
-(define (wurzel-iter schaetzwert x)
-(if (gut-genug? schaetzwert x)
-schaetzwert
-(wurzel-iter (verbessern schaetzwert x) x)))
-
-(define (wurzel x)
-(wurzel-iter 6.0 x))
-
-(wurzel 4 )
